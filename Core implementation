@@ -1,0 +1,41 @@
+import json
+from typing import Dict, List
+from pathlib import Path
+
+class DeepSeekAssistant:
+    def __init__(self, user_id: str = "default"):
+        self.user_id = user_id
+        self.memory_path = Path(f"memory/{user_id}.json")
+        self.memory = self._load_memory()
+        self.context_window = 5  # Keep last 5 exchanges
+
+    def _load_memory(self) -> Dict:
+        try:
+            with open(self.memory_path, 'r') as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {"conversation": [], "knowledge": {}}
+
+    def _save_memory(self):
+        self.memory_path.parent.mkdir(exist_ok=True)
+        with open(self.memory_path, 'w') as f:
+            json.dump(self.memory, f)
+
+    def chat(self, input_text: str) -> str:
+        # Update conversation history
+        self.memory['conversation'].append({"user": input_text})
+        
+        # Generate response (placeholder - integrate actual AI model)
+        response = f"Processed: {input_text} (Context: {self.memory['conversation'][-self.context_window:]})"
+        
+        # Update memory
+        self.memory['conversation'].append({"assistant": response})
+        self._save_memory()
+        return response
+
+    def add_knowledge(self, key: str, value: str):
+        self.memory['knowledge'][key] = value
+        self._save_memory()
+
+    def recall(self, key: str) -> str:
+        return self.memory['knowledge'].get(key, "No information found")
