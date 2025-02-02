@@ -31,4 +31,19 @@ def save_memory(user_id):
     classification_level = request.form.get('classification', 'public')
     data = upload_file(file)
     classified_data = classify_data(data, classification_level)
-    return jsonify(classified_data)
+    return jsonify(classified_data)# save_memory.py
+from flask import Flask, request, jsonify
+from filecoin_storage import upload_file
+from auth import authorize_user
+
+app = Flask(__name__)
+
+@app.route('/memory/<user_id>', methods=['POST'])
+@authorize_user('write')
+def save_memory(user_id):
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['file']
+    result = upload_file(file)
+    return jsonify(result)
