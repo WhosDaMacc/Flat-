@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A modern web application built with React. This project focuses on [briefly describe your project's purpose, e.g., "a responsive UI toolkit" or "a data visualization dashboard"].
+A modern web application built with React. This project focuses on [creating a database to work across projects collectively, and having a AI assistant that remembers and recalls your work across prompts between peers"].
 
 ---
 
