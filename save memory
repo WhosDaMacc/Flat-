@@ -1,1 +1,16 @@
-curl -X POST "http://127.0.0.1:8000/memory/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key"curl -X POST "http://127.0.0.1:8000/memory/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key"
+curl -X POST "http://127.0.0.1:8000/memory/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key"curl -X POST "http://127.0.0.1:8000/memory/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key"# save_memory.py
+from flask import Flask, request, jsonify
+from filecoin_storage import upload_file
+from auth import authorize_user
+
+app = Flask(__name__)
+
+@app.route('/memory/<user_id>', methods=['POST'])
+@authorize_user
+def save_memory(user_id):
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    
+    file = request.files['file']
+    result = upload_file(file)
+    return jsonify(result)
