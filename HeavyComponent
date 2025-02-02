@@ -1,0 +1,3 @@
+const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
+
+<Suspense>
