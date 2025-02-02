@@ -1,3 +1,11 @@
 const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
 
 <Suspense>
+// HeavyComponent.jsx
+const HeavyComponent = () => { ... };
+export default HeavyComponent; // ✅ Required for React.lazy()
+<ErrorBoundary>
+  <Suspense fallback={<Spinner />}>
+    <HeavyComponent />
+  </Suspense>
+</ErrorBoundary>
