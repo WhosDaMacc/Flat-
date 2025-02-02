@@ -1,0 +1,13 @@
+from fastapi import FastAPI
+from contextlib import asynccontextmanager
+import redis.asyncio as redis
+from fastapi_limiter import FastAPILimiter
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    redis_connection = redis.from_url('redis://localhost:6379/0')
+    await FastAPILimiter.init(redis_connection)
+    yield
+    await FastAPILimiter.close()
+
+app = FastAPI(lifespan=lifespan)
