@@ -5,3 +5,4 @@ redis==4.2.2
 fastapi-limiter==0.1.0
 jose==3.3.0
 sqlmodel==0.0.4
+pip install -r requirements.txt
