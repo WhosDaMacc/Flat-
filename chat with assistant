@@ -1,1 +1,13 @@
-curl -X POST "http://127.0.0.1:8000/chat/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key" -d '{"message": "Hello"}'curl -X POST "http://127.0.0.1:8000/chat/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key" -d '{"message": "Hello"}'
+curl -X POST "http://127.0.0.1:8000/chat/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key" -d '{"message": "Hello"}'curl -X POST "http://127.0.0.1:8000/chat/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key" -d '{"message": "Hello"}'# chat_with_assistant.py
+from flask import Flask, request, jsonify
+from auth import authorize_user
+
+app = Flask(__name__)
+
+@app.route('/chat/<user_id>', methods=['POST'])
+@authorize_user
+def chat_with_assistant(user_id):
+    message = request.json.get('message', '')
+    # Process the message with your assistant logic
+    response = {"reply": "Hello!"}  # Placeholder response
+    return jsonify(response)
