@@ -1,0 +1,13 @@
+// Bad: Monolithic component
+const App = () => {
+  // 500 lines of code...
+};
+
+// Good: Split into smaller components
+const App = () => (
+  <Layout>
+    <Header />
+    <MainContent />
+    <Footer />
+  </Layout>
+);
