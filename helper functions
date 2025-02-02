@@ -1,0 +1,12 @@
+from typing import Optional, Dict
+from .assistant import DeepSeekAssistant
+
+app.state.assistants: Dict[str, DeepSeekAssistant] = {}
+
+async def get_or_create_assistant(user_id: str) -> DeepSeekAssistant:
+    if user_id not in app.state.assistants:
+        app.state.assistants[user_id] = DeepSeekAssistant(user_id)
+    return app.state.assistants[user_id]
+
+async def get_assistant(user_id: str) -> Optional[DeepSeekAssistant]:
+    return app.state.assistants.get(user_id)
