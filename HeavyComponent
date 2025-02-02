@@ -9,3 +9,4 @@ export default HeavyComponent; // ✅ Required for React.lazy()
     <HeavyComponent />
   </Suspense>
 </ErrorBoundary>
+<Suspense>
