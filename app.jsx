@@ -18,3 +18,5 @@ const App = () => {
     </Router>
   );
 };
+const HeavyComponent = React.lazy(() => import('./components/HeavyComponent'));
+<Suspend>
