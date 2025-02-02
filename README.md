@@ -1,4 +1,4 @@
-# [Project Name]
+# [DEEPSEA DIVER]
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://react.dev/)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/)
