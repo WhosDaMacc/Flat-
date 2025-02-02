@@ -1,0 +1,1 @@
+curl -X POST "http://127.0.0.1:8000/memory/user123" -H "Authorization: Bearer <token>" -H "X-API-Key: your_api_key"
