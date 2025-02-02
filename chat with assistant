@@ -10,4 +10,18 @@ def chat_with_assistant(user_id):
     message = request.json.get('message', '')
     # Process the message with your assistant logic
     response = {"reply": "Hello!"}  # Placeholder response
+    return jsonify(response)# chat_with_assistant.py
+from flask import Flask, request, jsonify
+from auth import authorize_user
+from data_classification import check_access
+
+app = Flask(__name__)
+
+@app.route('/chat/<user_id>', methods=['POST'])
+@authorize_user
+def chat_with_assistant(user_id):
+    message = request.json.get('message', '')
+    # Process the message with your assistant logic
+    response = {"reply": "Hello!"}  # Placeholder response
+    check_access(response, request.headers.get('Authorization'))
     return jsonify(response)
