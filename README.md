@@ -1,4 +1,4 @@
-# [DEEPSEA DIVER]
+# DEEPSEA DIVER
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://react.dev/)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/)
@@ -13,7 +13,7 @@ A modern web application built with React. This project focuses on [creating a d
 - **Responsive Design**: Works seamlessly across all devices.
 - **Modular Components**: Reusable React components in `src/components/`.
 - **Optimized Performance**: Code-splitting with `React.lazy()`.
-- [Add more features specific to your project].
+- .
 
 ---
 
